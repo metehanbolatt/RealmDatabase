@@ -3,7 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/meteb/Desktop/RealmDatabase/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/meteb/Desktop/RealmDatabase/app/src/main/res/drawable/false_edit_text_background.xml" value="0.216" />
+        <entry key="..\:/Users/meteb/Desktop/RealmDatabase/app/src/main/res/drawable/note_row_background.xml" value="0.216" />
+        <entry key="..\:/Users/meteb/Desktop/RealmDatabase/app/src/main/res/drawable/true_edit_text_background.xml" value="0.216" />
+        <entry key="..\:/Users/meteb/Desktop/RealmDatabase/app/src/main/res/layout/activity_add_note.xml" value="0.3171171171171171" />
+        <entry key="..\:/Users/meteb/Desktop/RealmDatabase/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/meteb/Desktop/RealmDatabase/app/src/main/res/layout/note_recycler_row.xml" value="0.33" />
       </map>
     </option>
   </component>

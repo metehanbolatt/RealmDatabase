@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".AddNoteActivity">
+
+    <TextView
+        android:id="@+id/note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Note"
+        android:textSize="32sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/impact"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/noteTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="#707070"
+        android:hint="Title"
+        android:textColor="@color/white"
+        android:padding="10dp"
+        android:background="@drawable/true_edit_text_background"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/note" />
+
+    <EditText
+        android:id="@+id/noteDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="#707070"
+        android:hint="Description"
+        android:textColor="@color/white"
+        android:padding="10dp"
+        android:background="@drawable/true_edit_text_background"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/noteTitle" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@id/noteDescription"
+        app:layout_constraintTop_toBottomOf="@id/noteDescription"
+        app:layout_constraintEnd_toEndOf="@id/noteDescription">
+
+        <RadioButton
+            android:id="@+id/low"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Low"
+            android:textColor="#00C853" />
+
+        <RadioButton
+            android:id="@+id/medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medium"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:textColor="#FFAB00" />
+
+        <RadioButton
+            android:id="@+id/high"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="High"
+            android:textColor="#D50000" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/addNoteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add"
+        android:backgroundTint="#E65100"
+        android:textAllCaps="false"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@id/noteDescription"
+        app:layout_constraintEnd_toEndOf="@id/noteDescription"
+        app:layout_constraintTop_toBottomOf="@id/radioGroup" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
