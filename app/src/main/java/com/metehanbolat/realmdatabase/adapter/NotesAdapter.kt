@@ -4,17 +4,20 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
-import com.metehanbolat.realmdatabase.AddNoteActivity
-import com.metehanbolat.realmdatabase.Database
-import com.metehanbolat.realmdatabase.MainActivity
+import com.metehanbolat.realmdatabase.view.AddNoteActivity
+import com.metehanbolat.realmdatabase.database.Database
 import com.metehanbolat.realmdatabase.R
 import com.metehanbolat.realmdatabase.databinding.NoteRecyclerRowBinding
 import com.metehanbolat.realmdatabase.model.Note
 import kotlin.collections.ArrayList
 
 class NotesAdapter(private var noteList : ArrayList<Note>, private val database : Database) : RecyclerView.Adapter<NotesAdapter.NotesViewHolder>() {
+
+    var mutableControl = MutableLiveData(false)
+
     class NotesViewHolder(val binding: NoteRecyclerRowBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesViewHolder {
@@ -23,6 +26,7 @@ class NotesAdapter(private var noteList : ArrayList<Note>, private val database 
     }
 
     override fun onBindViewHolder(holder: NotesViewHolder, position: Int) {
+
         holder.binding.apply {
             noteTitle.text = noteList[position].noteTitle
             noteDescription.text = noteList[position].noteDescription
@@ -39,6 +43,7 @@ class NotesAdapter(private var noteList : ArrayList<Note>, private val database 
                     database.deleteNote(noteList[position].id)
                     noteList.removeAt(position)
                     notifyDataSetChanged()
+                    mutableControl.value = true
                 }.show()
             }
 

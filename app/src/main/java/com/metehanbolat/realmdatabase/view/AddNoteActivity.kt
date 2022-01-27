@@ -1,4 +1,4 @@
-package com.metehanbolat.realmdatabase
+package com.metehanbolat.realmdatabase.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,9 +8,9 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.RadioButton
-import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.core.view.get
+import com.metehanbolat.realmdatabase.R
+import com.metehanbolat.realmdatabase.database.Database
 import com.metehanbolat.realmdatabase.databinding.ActivityAddNoteBinding
 import kotlin.math.round
 
@@ -75,9 +75,13 @@ class AddNoteActivity : AppCompatActivity() {
             val description = binding.noteDescription.text.toString()
 
             if (title.isEmpty()){
-                binding.noteTitle.background = ContextCompat.getDrawable(this, R.drawable.false_edit_text_background)
+                binding.noteTitle.background = ContextCompat.getDrawable(this,
+                    R.drawable.false_edit_text_background
+                )
             }else if (description.isEmpty()){
-                binding.noteDescription.background = ContextCompat.getDrawable(this, R.drawable.false_edit_text_background)
+                binding.noteDescription.background = ContextCompat.getDrawable(this,
+                    R.drawable.false_edit_text_background
+                )
             }else if (!(binding.low.isChecked || binding.medium.isChecked || binding.high.isChecked)){
                 object : CountDownTimer(1200, 400) {
                     override fun onTick(p0: Long) {
@@ -135,9 +139,13 @@ class AddNoteActivity : AppCompatActivity() {
 
             override fun afterTextChanged(p0: Editable?) {
                 if (p0.isNullOrEmpty()){
-                    binding.noteTitle.background = ContextCompat.getDrawable(this@AddNoteActivity, R.drawable.false_edit_text_background)
+                    binding.noteTitle.background = ContextCompat.getDrawable(this@AddNoteActivity,
+                        R.drawable.false_edit_text_background
+                    )
                 }else {
-                    binding.noteTitle.background = ContextCompat.getDrawable(this@AddNoteActivity, R.drawable.true_edit_text_background)
+                    binding.noteTitle.background = ContextCompat.getDrawable(this@AddNoteActivity,
+                        R.drawable.true_edit_text_background
+                    )
                     println(p0.toString())
                     println(title)
                     if (p0.toString() == title){
@@ -157,9 +165,13 @@ class AddNoteActivity : AppCompatActivity() {
 
             override fun afterTextChanged(p0: Editable?) {
                 if (p0.isNullOrEmpty()){
-                    binding.noteDescription.background = ContextCompat.getDrawable(this@AddNoteActivity, R.drawable.false_edit_text_background)
+                    binding.noteDescription.background = ContextCompat.getDrawable(this@AddNoteActivity,
+                        R.drawable.false_edit_text_background
+                    )
                 }else {
-                    binding.noteDescription.background = ContextCompat.getDrawable(this@AddNoteActivity, R.drawable.true_edit_text_background)
+                    binding.noteDescription.background = ContextCompat.getDrawable(this@AddNoteActivity,
+                        R.drawable.true_edit_text_background
+                    )
                     if (p0.toString() == description){
                         binding.addNoteButton.visibility = View.INVISIBLE
                     }else {

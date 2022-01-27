@@ -1,4 +1,4 @@
-package com.metehanbolat.realmdatabase
+package com.metehanbolat.realmdatabase.database
 
 import android.content.Context
 import com.metehanbolat.realmdatabase.model.Note

@@ -1,9 +1,10 @@
-package com.metehanbolat.realmdatabase
+package com.metehanbolat.realmdatabase.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import com.metehanbolat.realmdatabase.R
 import com.metehanbolat.realmdatabase.databinding.ActivityEntranceBinding
 
 class EntranceActivity : AppCompatActivity() {
