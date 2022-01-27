@@ -6,13 +6,12 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
+import android.widget.RadioButton
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.get
-import com.google.android.material.snackbar.Snackbar
-import com.metehanbolat.realmdatabase.adapter.NotesAdapter
 import com.metehanbolat.realmdatabase.databinding.ActivityAddNoteBinding
-import com.metehanbolat.realmdatabase.model.Note
-import kotlin.math.floor
 import kotlin.math.round
 
 class AddNoteActivity : AppCompatActivity() {
@@ -25,6 +24,8 @@ class AddNoteActivity : AppCompatActivity() {
     var id = ""
     var title = ""
     var description = ""
+
+    var controlPriority = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,8 +42,9 @@ class AddNoteActivity : AppCompatActivity() {
             title = it["title"] as String
             description = it["description"] as String
             priority = it["priority"] as String
-
         }
+
+        controlPriority = priority
 
         binding.noteTitle.setText(title)
         binding.noteDescription.setText(description)
@@ -50,10 +52,20 @@ class AddNoteActivity : AppCompatActivity() {
         if (control == "update"){
             binding.addNoteButton.text = "Update"
             binding.note.text = "Update Note"
+            binding.addNoteButton.visibility = View.INVISIBLE
             when(priority) {
                 "low" -> binding.low.isChecked = true
                 "medium" -> binding.medium.isChecked = true
                 "high" -> binding.high.isChecked = true
+            }
+        }
+
+        binding.radioGroup.setOnCheckedChangeListener { radioGroup, i ->
+            val rb = findViewById<RadioButton>(radioGroup.checkedRadioButtonId)
+            if (controlPriority != rb.contentDescription.toString() && control == "update"){
+                binding.addNoteButton.visibility = View.VISIBLE
+            }else if (control == "update"){
+                binding.addNoteButton.visibility = View.INVISIBLE
             }
         }
 
@@ -87,9 +99,24 @@ class AddNoteActivity : AppCompatActivity() {
                 }
 
                 when {
-                    binding.low.isChecked -> priority = "low"
-                    binding.medium.isChecked -> priority = "medium"
-                    binding.high.isChecked -> priority = "high"
+                    binding.low.isChecked -> {
+                        priority = "low"
+                        if (controlPriority != priority){
+                            binding.addNoteButton.visibility = View.VISIBLE
+                        }
+                    }
+                    binding.medium.isChecked -> {
+                        priority = "medium"
+                        if (controlPriority != priority){
+                            binding.addNoteButton.visibility = View.VISIBLE
+                        }
+                    }
+                    binding.high.isChecked -> {
+                        priority = "high"
+                        if (controlPriority != priority){
+                            binding.addNoteButton.visibility = View.VISIBLE
+                        }
+                    }
                 }
 
                 database.noteAdd(title, description, priority)
@@ -111,6 +138,13 @@ class AddNoteActivity : AppCompatActivity() {
                     binding.noteTitle.background = ContextCompat.getDrawable(this@AddNoteActivity, R.drawable.false_edit_text_background)
                 }else {
                     binding.noteTitle.background = ContextCompat.getDrawable(this@AddNoteActivity, R.drawable.true_edit_text_background)
+                    println(p0.toString())
+                    println(title)
+                    if (p0.toString() == title){
+                        binding.addNoteButton.visibility = View.INVISIBLE
+                    }else {
+                        binding.addNoteButton.visibility = View.VISIBLE
+                    }
                 }
             }
 
@@ -126,11 +160,20 @@ class AddNoteActivity : AppCompatActivity() {
                     binding.noteDescription.background = ContextCompat.getDrawable(this@AddNoteActivity, R.drawable.false_edit_text_background)
                 }else {
                     binding.noteDescription.background = ContextCompat.getDrawable(this@AddNoteActivity, R.drawable.true_edit_text_background)
+                    if (p0.toString() == description){
+                        binding.addNoteButton.visibility = View.INVISIBLE
+                    }else {
+                        binding.addNoteButton.visibility = View.VISIBLE
+                    }
                 }
 
             }
 
         })
+
+        binding.low.setOnClickListener {
+
+        }
 
     }
 }
