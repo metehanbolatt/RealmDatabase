@@ -52,4 +52,6 @@ dependencies {
     api "io.realm:realm-android-library:10.10.0"
     api "io.realm:realm-android-kotlin-extensions:10.10.0"
     kapt "io.realm:realm-annotations-processor:10.10.0"
+
+    implementation 'com.airbnb.android:lottie:4.2.1'
 }
